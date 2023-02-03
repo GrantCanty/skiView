@@ -11,8 +11,12 @@
     height: 100%;
     background-color: transparent;
     border: transparent;
-    border-left: 1px solid black;
+    border-right: 1px solid black;
     font-size: 1.5em;
+}
+
+.Modify-Button:hover {
+    cursor: pointer;
 }
 
 /*.Modify-Button h1 {
