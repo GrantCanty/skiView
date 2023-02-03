@@ -1,0 +1,41 @@
+.Resort {
+    color: #45464a;
+    border: 3px black solid;
+    margin: 3px auto;
+    border-radius: 12px;
+    display: block;
+    text-align: center;
+    width: 55%;
+    align-items: center;
+}
+
+.Resort-Data span {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.Resort-Header {
+    text-align: center;
+}
+
+img {
+    vertical-align: middle;
+    max-width: 45px;
+}
+
+span {
+    vertical-align: middle;
+}
+
+.H1 {
+    font-size: 2em;
+}
+
+.Resort-Data {
+    display: inline;
+}
+
+h1 {
+    padding: 0px;
+    margin: 5px;
+}
