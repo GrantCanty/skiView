@@ -70,7 +70,7 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
                                 <br></br>
                                 <label>Longitude
                                     <input 
-                                    type="text" 
+                                    type="number" 
                                     name="longitude"
                                     value={form.longitude}
                                     onChange={handleChange}
@@ -79,7 +79,7 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
                                 <br></br>
                                 <label>Latitude
                                     <input 
-                                    type="text" 
+                                    type="number" 
                                     name="latitude"
                                     value={form.latitude}
                                     onChange={handleChange}
@@ -100,7 +100,6 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
                                 <button type='submit'>Submit</button>
                             </div>
                     }
-                    <h2>test {option}</h2>
                 </form>
                 <button onClick={onCloseModalButton}>Close Modal</button>
             </div>
