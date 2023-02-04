@@ -2,12 +2,88 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './Modal.css'
 
-const Modal = ({show, onCloseModalButton, resorts}) => {
+const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChange, handleFormChange, option, form}) => {
+    
+    if (!show) {
+        return null
+    }
+
+    return ReactDOM.createPortal (
+       <div className='modal-bg'>
+            <div className='modal'>
+                <form onSubmit={submitForm}>
+                    <label>Modify: 
+                        <select 
+                        name="option"
+                        value={option}
+                        onChange={handleOptionChange}
+                        >
+                            <option value="" disabled={true}>-- Choose an Option --</option>
+                            <option value="Add">Add</option>
+                            <option value="Delete">Delete</option>
+                        </select>
+                    </label>
+                    {option === "" ? null :
+                        option === "Add" ?
+                            <div>
+                                <label>Resort Name 
+                                    <input 
+                                    type="text" 
+                                    name="resortName"
+                                    value={form.resortName}
+                                    onChange={handleFormChange}
+                                    />
+                                </label>
+                                <br></br>
+                                <label>Longitude
+                                    <input 
+                                    type="number" 
+                                    name="longitude"
+                                    value={form.longitude}
+                                    onChange={handleFormChange}
+                                    />
+                                </label>
+                                <br></br>
+                                <label>Latitude
+                                    <input 
+                                    type="number" 
+                                    name="latitude"
+                                    value={form.latitude}
+                                    onChange={handleFormChange}
+                                    />
+                                </label>
+                                <button type='submit'>Submit</button>
+                            </div> :
+                            <div>
+                                <label>Delete
+                                    <select 
+                                    name="delete"
+                                    value={form.resortName}
+                                    onChange={handleFormChange}
+                                    >   
+                                        {[...resorts.keys()].map((item)=> {
+                                            return <option key={item} value={item}>{item}</option>
+                                        })}
+                                    </select>
+                                </label>
+                                <button type='submit'>Submit</button>
+                            </div>
+                    }
+                </form>
+                <button onClick={onCloseModalButton}>Close Modal</button>
+            </div>
+        </div>
+        , document.body
+    )
+}
+
+
+
+/*const Modal = ({show, onCloseModalButton, resorts}) => {
     const [form, setForm] = React.useState({
         resortName: "",
         longitude: Number,
         latitude: Number,
-        delete: "",
     })
 
     const [option, setOption] = React.useState("")
@@ -84,15 +160,17 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
                                 <button type='submit'>Submit</button>
                             </div> :
                             <div>
-                                <select 
-                                name="delete"
-                                value={form.delete}
-                                onChange={handleChange}
-                                >   
-                                    {[...resorts.keys()].map((item)=> {
-                                        return <option key={item} value={item}>{item}</option>
-                                    })}
-                                </select>
+                                <label>Delete
+                                    <select 
+                                    name="delete"
+                                    value={form.resortName}
+                                    onChange={handleChange}
+                                    >   
+                                        {[...resorts.keys()].map((item)=> {
+                                            return <option key={item} value={item}>{item}</option>
+                                        })}
+                                    </select>
+                                </label>
                                 <button type='submit'>Submit</button>
                             </div>
                     }
@@ -102,6 +180,6 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
         </div>
         , document.body
     )
-}
+}*/
 
 export default Modal;
