@@ -1,4 +1,4 @@
-.Resort {
+.resort {
     color: #45464a;
     border: 3px black solid;
     margin: 3px auto;
@@ -9,12 +9,13 @@
     align-items: center;
 }
 
-.Resort-Data span {
+.resort-data span {
     margin-left: 5px;
     margin-right: 5px;
+    display: inline;
 }
 
-.Resort-Header {
+.resort-header {
     text-align: center;
 }
 
@@ -27,12 +28,8 @@ span {
     vertical-align: middle;
 }
 
-.H1 {
+.resort-text {
     font-size: 2em;
-}
-
-.Resort-Data {
-    display: inline;
 }
 
 h1 {

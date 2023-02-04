@@ -11,21 +11,19 @@ function Resort(props) {
     React.useEffect(() => {
        
         axios.get(url, { params: {lat: props.lat, lon: props.lon, appid: props.appid, units: "imperial"}}).then((response) => {
-            console.log(url, `?lat${props.lat}&long${props.lon}&appid${props.appid}`)
             setRes(response.data)
-            console.log('temp: ', response.data)
         });
     }, [props]);
 
     if (!res) return null;
 
     return (
-        <div className='Resort'>
-            <div className='Resort-Header'>
+        <div className='resort'>
+            <div className='resort-header'>
                 {res.weather[0].icon ? <img src={iconUrl + res.weather[0].icon + '@2x.png'} alt="weather-icon"/> : null}
-                {res.main ? <span className='H1'> <b>{props.resortName}</b> {Math.round(res.main.temp)}°</span> : <span className='H1'><b>{props.resortName}</b></span>}
+                {res.main ? <span className='resort-text'> <b>{props.resortName}</b> {Math.round(res.main.temp)}°</span> : <span className='resort-text'><b>{props.resortName}</b></span>}
             </div>
-            <div className='Resort-Data'>
+            <div className='resort-data'>
                 {res.main ? <span><b>High:</b> {Math.round(res.main.temp_max)} </span> : null }
                 {res.main ? <span><b>Low:</b> {Math.round(res.main.temp_min)} </span> : null }
                 {res.weather ? <span><b>Weather:</b> {res.weather[0].main} </span> : null}

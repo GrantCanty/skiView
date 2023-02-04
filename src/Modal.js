@@ -20,18 +20,14 @@ const Modal = ({show, onCloseModalButton, resorts}) => {
     }
 
     const handleOptionChange = e => {
-        console.log(e.target.value)
         setOption(e.target.value)
     }
 
-    const submitForm = (event) => {
-        event.preventDefault()
-        console.log("submitting form", form)
+    const submitForm = e => {
+        e.preventDefault()
         if (option === "Add") {
             resorts.set(form.resortName, [form.latitude, form.longitude])
         }
-        console.log(form.resortName, form.latitude, form.longitude)
-        console.log(resorts)
         if (option === "Delete") {
             resorts.delete(form.resortName)
         }
