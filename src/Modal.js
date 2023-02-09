@@ -28,6 +28,7 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                             <div>
                                 <label>Resort Name 
                                     <input 
+                                    key="name"
                                     type="text" 
                                     name="resortName"
                                     value={form.resortName}
@@ -37,6 +38,7 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                                 <br></br>
                                 <label>Longitude
                                     <input 
+                                    key="long"
                                     type="number" 
                                     name="longitude"
                                     value={form.longitude}
@@ -46,6 +48,7 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                                 <br></br>
                                 <label>Latitude
                                     <input 
+                                    key="lat"
                                     type="number" 
                                     name="latitude"
                                     value={form.latitude}
@@ -57,10 +60,11 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                             <div>
                                 <label>Delete
                                     <select 
-                                    name="delete"
+                                    name="resortName"
                                     value={form.resortName}
                                     onChange={handleFormChange}
                                     >   
+                                    <option value="" disabled={true}>-- Delete any Resort --</option>
                                         {[...resorts.keys()].map((item)=> {
                                             return <option key={item} value={item}>{item}</option>
                                         })}
