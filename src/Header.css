@@ -1,5 +1,5 @@
 .header {
-    background-color: orange;
+    background-color: rgb(54,56,59);
     width: 100%;
     height: 65px;
     position: fixed;
@@ -14,8 +14,10 @@
     height: 100%;
     background-color: transparent;
     border: transparent;
-    border-right: 1px solid black;
+    border-right: 1px solid white;
+    border-radius: 0px;
     font-size: 1.5em;
+    color: white;
 }
 
 .modify-button:hover {

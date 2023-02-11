@@ -12,7 +12,62 @@
 
 .modal {
     background-color: #fefefe;
-    margin: auto;
+    color: #45464a;
+    margin-top: 20px;
     padding: 20px;
-    width: 80%;
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+form {
+    margin: 0 auto;
+}
+
+.form-body {
+    margin: 0 auto;
+    padding: .5em;
+    margin-bottom: 10px;
+}
+
+.sumbit {
+    margin-left: .5em;
+}
+
+.form-title {
+    font-size: 2em;
+}
+
+input, label, select {
+    display: block;
+}
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: rgb(243,243,244);
+    border: 0px;
+    border-radius: 4px;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+button {
+    background-color: #45464a;
+    color: rgb(243,243,244);
+    border: 0px;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+button:hover {
+    cursor: pointer;
 }
