@@ -17,11 +17,17 @@ function Resort(props) {
 
     if (!res) return null;
 
+    const words = props.resortName.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    const resortName = words.join(" ")
+
     return (
         <div className='resort'>
             <div className='resort-header'>
                 {res.weather[0].icon ? <img src={iconUrl + res.weather[0].icon + '@2x.png'} alt="weather-icon"/> : null}
-                {res.main ? <span className='resort-text'> <b>{props.resortName}</b> {Math.round(res.main.temp)}°</span> : <span className='resort-text'><b>{props.resortName}</b></span>}
+                {res.main ? <span className='resort-text'> <b>{resortName}</b> {Math.round(res.main.temp)}°</span> : <span className='resort-text'><b>{props.resortName}</b></span>}
             </div>
             <div className='resort-data'>
                 {res.main ? <span><b>High:</b> {Math.round(res.main.temp_max)} </span> : null }
@@ -32,14 +38,5 @@ function Resort(props) {
         </div>
     );
 }
-
-/*
-<div className='Resort-Data'>
-                {res.main ? <span>high: {res.main.temp_max} </span> : null }
-                {res.main ? <span>low: {res.main.temp_min} </span> : null }
-                {res.weather ? <span>weather: {res.weather[0].main} </span> : null}
-                {res.wind ? <span>wind: {res.wind.speed} </span> : null}
-            </div>
-*/
 
 export default Resort;

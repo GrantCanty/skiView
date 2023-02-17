@@ -7,12 +7,12 @@ const ParentComponent = ({show, onCloseModalButton}) => {
     
     React.useEffect(() => {
         const tmpResorts = new Map(resorts)
-        tmpResorts.set("Keystone", [39.6069742, -105.97011])
-        tmpResorts.set("Breckenridge", [39.4808, -106.0676])
-        tmpResorts.set("Vail", [39.6061, -106.3550])
-        tmpResorts.set("Crested Butte", [38.8991, -106.9658])
-        tmpResorts.set("Winter Park", [39.8841, -105.7627])
-        tmpResorts.set("Copper Mountain", [39.5022, -106.1497])
+        tmpResorts.set("keystone", [39.6069742, -105.97011])
+        tmpResorts.set("breckenridge", [39.4808, -106.0676])
+        tmpResorts.set("vail", [39.6061, -106.3550])
+        tmpResorts.set("crested butte", [38.8991, -106.9658])
+        tmpResorts.set("winter park", [39.8841, -105.7627])
+        tmpResorts.set("copper mountain", [39.5022, -106.1497])
         setResorts(tmpResorts)
     }, [])
 
@@ -34,19 +34,27 @@ const ParentComponent = ({show, onCloseModalButton}) => {
         setFormData(prevState => ({
             ...prevState,
             [e.target.name]: e.target.value,
+
         }))
+    }
+
+    function clearFormData() {
+        formData.resortName = ""
+        formData.latitude = NaN
+        formData.longitude = NaN
     }
 
     const submitForm = e => {
         e.preventDefault()
         if (formOption === "Add") {
-            setResorts(new Map(resorts.set(formData.resortName, [formData.latitude, formData.longitude])))
+            setResorts(new Map(resorts.set(formData.resortName.toLowerCase(), [formData.latitude, formData.longitude])))
         }
         if (formOption === "Delete") {
             let tmpResorts = resorts
             tmpResorts.delete(formData.resortName)
             setResorts(new Map(tmpResorts))
         }
+        clearFormData()
     }
 
     return (
