@@ -31,8 +31,6 @@ const ParentComponent = ({show, onCloseModalButton}) => {
         latitude: Number,
     })
 
-   //const [resortNameChanged, setResortNameChanged] = React.useState(false)
-
     const handleFormOptionChange = e => {
         setFormOption(e.target.value)
     }
@@ -74,14 +72,17 @@ const ParentComponent = ({show, onCloseModalButton}) => {
     const submitForm = e => {
         e.preventDefault()
         if (formOption === "Add") {
-            setResorts(new Map(resorts.set(formData.resortName.toLowerCase(), [formData.latitude, formData.longitude])))
+            if ((formData.resortName.length > 0 && formData.resortNameChanged === true) && (formData.latitude.length > 0 && formData.latitudeChanged === true) && (formData.longitude.length > 0 && formData.longitudeChanged === true)) {
+                setResorts(new Map(resorts.set(formData.resortName.toLowerCase(), [formData.latitude, formData.longitude])))
+                clearFormData()
+            }
         }
         if (formOption === "Delete") {
             let tmpResorts = resorts
             tmpResorts.delete(formData.resortName)
             setResorts(new Map(tmpResorts))
+            clearFormData()
         }
-        clearFormData()
     }
 
     return (
