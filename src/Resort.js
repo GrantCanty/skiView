@@ -27,13 +27,13 @@ function Resort(props) {
         <div className='resort'>
             <div className='resort-header'>
                 {res.weather[0].icon ? <img src={iconUrl + res.weather[0].icon + '@2x.png'} alt="weather-icon"/> : null}
-                {res.main ? <span className='resort-text'> <b>{resortName}</b> {Math.round(res.main.temp)}°</span> : <span className='resort-text'><b>{props.resortName}</b></span>}
+                {res.main ? <span className='resort-text'> <b>{resortName}</b> {Math.round(res.main.temp)}°F</span> : <span className='resort-text'><b>{props.resortName}</b></span>}
             </div>
             <div className='resort-data'>
-                {res.main ? <span><b>High:</b> {Math.round(res.main.temp_max)} </span> : null }
-                {res.main ? <span><b>Low:</b> {Math.round(res.main.temp_min)} </span> : null }
+                {res.main ? <span><b>High:</b> {Math.round(res.main.temp_max)}°F </span> : null }
+                {res.main ? <span><b>Low:</b> {Math.round(res.main.temp_min)}°F </span> : null }
                 {res.weather ? <span><b>Weather:</b> {res.weather[0].main} </span> : null}
-                {res.wind ? <span><b>Wind:</b> {Math.round(res.wind.speed)} </span> : null}
+                {res.wind ? <span><b>Wind:</b> {Math.round(res.wind.speed)} mph </span> : null}
             </div>
         </div>
     );

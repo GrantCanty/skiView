@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './Modal.css'
+import NumInput from './numinput'
+import TextInput from './textinput'
 
-const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChange, handleFormChange, option, form}) => {
+const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChange, option, form, resortChange, latitudeChange, longitudeChange, handleDelete}) => {
 
     if (!show) {
         return null
@@ -28,34 +30,12 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                         {option === "" ? null :
                             option === "Add" ?
                                 <div>
-                                    <label>Resort Name 
-                                        <input 
-                                        key="name"
-                                        type="text" 
-                                        name="resortName"
-                                        value={form.resortName}
-                                        onChange={handleFormChange}
-                                        id={ resorts.has(form.resortName.toLowerCase()) === true ? "exists" : "" }
-                                        />
-                                    </label>
-                                    <label>Latitude
-                                        <input 
-                                        key="lat"
-                                        type="number" 
-                                        name="latitude"
-                                        value={form.latitude}
-                                        onChange={handleFormChange}
-                                        />
-                                    </label>
-                                    <label>Longitude
-                                        <input 
-                                        key="long"
-                                        type="number" 
-                                        name="longitude"
-                                        value={form.longitude}
-                                        onChange={handleFormChange}
-                                        />
-                                    </label>
+                                    <TextInput label="Resort Name" key="name" name="resortName" value={form.resortName} valueChanged={form.resortNameChanged} onChange={resortChange} resorts={resorts} />
+                                    { /*<p className='form-error-message' id={resorts.has(form.resortName.toLowerCase()) === true ? "error" : null} >Resort already exists</p>*/ }
+                                    <NumInput label="Latitude" key="lat" name="latitude" value={form.latitude} valueChanged={form.latitudeChanged} onChange={latitudeChange} min={-90} max={90} />
+                                    { /*<p className='form-error-message' id={form.latitude > 90 || form.latitude < -90 ? "error" : null} >Latitude is too { form.latitude > 90 ? "large": "small"}</p>*/ }
+                                    <NumInput label="Longitude" key="long" name="longitude" value={form.longitude} valueChanged={form.longitudeChanged} onChange={longitudeChange} min={-180} max={180} />
+                                    { /*<p className='form-error-message' id={form.longitude > 180 || form.longitude < -180 ? "error" : null} >Longitude is too {form.longitude > 180 ? "large": "small"}</p>*/ }
                                     <button type='submit'>Submit</button>
                                 </div> :
                                 <div>
@@ -63,12 +43,11 @@ const Modal = ({show, onCloseModalButton, resorts, submitForm, handleOptionChang
                                         <select 
                                         name="resortName"
                                         value={form.resortName}
-                                        onChange={handleFormChange}
+                                        onChange={handleDelete}
                                         >   
                                         <option value="" disabled={true}>-- Delete any Resort --</option>
                                             {[...resorts.keys()].map((item)=> {
                                                 const words = item.split(" ")
-                                                //console.log(words.length(), typeof words[0])
                                                 for (let i = 0; i < words.length; i++) {
                                                     words[i] = words[i][0].toUpperCase() + words[i].substr(1)
                                                 }

@@ -73,13 +73,24 @@ button:hover {
     cursor: pointer;
 }
 
-#exists input{
-    border: 2px solid red;
-}
-
-#exists {
+input#error{
     border: 2px solid rgb(212, 64, 64);
     background-color: rgb(248, 219, 219);
+}
+
+input#no-error{
+    border: 2px solid rgb(64, 212, 86);
+    /*background-color: rgb(248, 219, 219);*/
+}
+
+p {
+    margin-top: 0px;
+    font-size: 12px;
+    color: transparent;
+}
+
+p#error {
+    color: rgb(212, 64, 64);
 }
 
 .form-error {
@@ -87,7 +98,7 @@ button:hover {
     padding: 10px;
 }
 
-.form-error p /*#existing-resort*/ {
+.form-error p {
     color: rgb(212, 64, 64);
     margin-top: 0px;
 }

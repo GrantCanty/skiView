@@ -21,10 +21,17 @@ const ParentComponent = ({show, onCloseModalButton}) => {
     const [formOption, setFormOption] = React.useState("")
     
     const [formData, setFormData] = React.useState({
+        resortNameChanged: false,
         resortName: "",
+        
+        longitudeChanged: false,
         longitude: Number,
+
+        latitudeChanged: false,
         latitude: Number,
     })
+
+   //const [resortNameChanged, setResortNameChanged] = React.useState(false)
 
     const handleFormOptionChange = e => {
         setFormOption(e.target.value)
@@ -38,9 +45,29 @@ const ParentComponent = ({show, onCloseModalButton}) => {
         }))
     }
 
+    const handleResortNameChange = e => {
+        formData.resortNameChanged=true;
+        handleFormDataChange(e)
+    }
+
+    const handleLatitudeChange = e => {
+        formData.latitudeChanged=true
+        handleFormDataChange(e)
+    }
+
+    const handleLongitudeChange = e => {
+        formData.longitudeChanged=true
+        handleFormDataChange(e)
+    }
+
     function clearFormData() {
+        formData.resortNameChanged = false
         formData.resortName = ""
+        
+        formData.latitudeChanged = false
         formData.latitude = NaN
+
+        formData.longitudeChanged = false
         formData.longitude = NaN
     }
 
@@ -60,7 +87,7 @@ const ParentComponent = ({show, onCloseModalButton}) => {
     return (
         <div>
             <ResortList appId={appId} resorts={resorts}/>
-            <Modal show={show} onCloseModalButton={onCloseModalButton} resorts={resorts} submitForm={submitForm} handleOptionChange={handleFormOptionChange} handleFormChange={handleFormDataChange} option={formOption} form={formData} />
+            <Modal show={show} onCloseModalButton={onCloseModalButton} resorts={resorts} submitForm={submitForm} handleOptionChange={handleFormOptionChange} option={formOption} form={formData} resortChange={handleResortNameChange} latitudeChange={handleLatitudeChange} longitudeChange={handleLongitudeChange} handleDelete={handleFormDataChange} />
         </div>
     )
 }
